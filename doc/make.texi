@@ -7664,6 +7664,12 @@ The argument @var{pattern} is a file name pattern, typically containing
 wildcard characters (as in shell file name patterns).  The result of
 @code{wildcard} is a space-separated list of the names of existing files
 that match the pattern.
+
+The @code{wildcard} function is implemented in terms of the system's
+@code{glob(3)} function (without a @code{GLOB_NOSORT} being
+provided). So there's no reason to @code{$(sort)} its output if the
+goal is to get output sorted in @code{glob(3)} order.
+
 @xref{Wildcards, ,Using Wildcard Characters in File Names}.
 
 @item $(realpath @var{names}@dots{})
